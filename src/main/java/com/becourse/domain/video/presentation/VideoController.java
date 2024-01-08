@@ -32,7 +32,7 @@ public class VideoController {
         return videoService.getVideo(id);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public BaseResponse deleteVideo(@PathVariable Long id){
         return videoService.deleteVideo(id);
     }
