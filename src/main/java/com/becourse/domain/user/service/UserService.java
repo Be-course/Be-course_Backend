@@ -11,7 +11,6 @@ public interface UserService {
 
     BaseResponse getUser(Long userId);
 
-    BaseResponse createOAuthUser();
 
     BaseResponse createLocalUser(CreateUserRequest createUserRequest);
 

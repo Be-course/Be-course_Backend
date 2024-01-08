@@ -13,4 +13,6 @@ public class GoogleResourceResponse {
     private Boolean verifiedEmail;
 
     private String picture;
+
+    private String provider = "google";
 }

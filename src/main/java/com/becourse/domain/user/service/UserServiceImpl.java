@@ -44,11 +44,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public BaseResponse createOAuthUser() {
-        return null;
-    }
-
-    @Override
     public BaseResponse createLocalUser(CreateUserRequest createUserRequest) {
         userRepository.save(UserEntity.builder()
                 .userName(createUserRequest.userName())

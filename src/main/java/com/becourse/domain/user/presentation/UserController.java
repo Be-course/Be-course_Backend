@@ -3,7 +3,7 @@ package com.becourse.domain.user.presentation;
 import com.becourse.domain.user.dto.CreateUserRequest;
 import com.becourse.domain.user.dto.LoginRequest;
 import com.becourse.domain.user.exception.UserException;
-import com.becourse.domain.user.service.UserServiceImpl;
+import com.becourse.domain.user.service.UserService;
 import com.becourse.global.common.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     @PostMapping
     public BaseResponse join(@RequestBody CreateUserRequest createUserRequest) {
