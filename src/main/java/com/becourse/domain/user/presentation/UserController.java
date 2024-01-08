@@ -16,19 +16,15 @@ public class UserController {
 
     @PostMapping
     public BaseResponse join(@RequestBody CreateUserRequest createUserRequest) {
-        if(createUserRequest.isNull()) {
-            throw UserException.badRequestException();
-        }
+        if(createUserRequest.isNull()) throw UserException.badRequestException();
 
         return userService.createLocalUser(createUserRequest);
     }
 
     @PostMapping("/login")
     public BaseResponse login(@RequestBody LoginRequest loginRequest) {
-        if(loginRequest.isNull()) {
-            throw UserException.badRequestException();
-        }
-
+        if(loginRequest.isNull()) throw UserException.badRequestException();
+        
         return userService.localLogin(loginRequest);
     }
 
