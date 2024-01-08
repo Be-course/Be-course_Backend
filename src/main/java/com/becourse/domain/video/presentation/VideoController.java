@@ -27,7 +27,7 @@ public class VideoController {
         return videoService.getVideos();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public BaseResponse getVideo(@PathVariable Long id){
         return videoService.getVideo(id);
     }
