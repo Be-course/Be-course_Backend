@@ -26,7 +26,7 @@ public interface VideoService {
                 .content(createVideoRequest.content())
                 .tag(String.join(",", createVideoRequest.tag()))
                 .createAt(LocalDate.now())
-                .creator(createVideoRequest.creator())
+                //.creator(createVideoRequest.creator())
                 .video_url(url)
                 .price(createVideoRequest.price())
                 .build();

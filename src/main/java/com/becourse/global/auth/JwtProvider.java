@@ -70,7 +70,7 @@ public class JwtProvider {
         if(claims.get("auth") == null) {
             throw new RuntimeException("권한 정보가 없는 토큰입니다");
         }
-        UserDetails principal = userDetailsServiceImpl.loadUserByUsername(parseToken(token).getSubject());
+        UserDetails principal = userDetailsServiceImpl.loadUserByUsername(claims.getSubject());
         return new UsernamePasswordAuthenticationToken(principal, "", principal.getAuthorities());
     }
 
