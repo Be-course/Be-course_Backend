@@ -2,7 +2,7 @@ package com.becourse.domain.video.dto.req;
 
 import java.util.List;
 
-public record CreateVideoRequest(String title, String content, List<String> tag, String creator,int price) {}
+public record CreateVideoRequest(String title, String content, List<String> tag ,int price) {}
 
 /*
     제목

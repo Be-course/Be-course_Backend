@@ -5,6 +5,7 @@ import com.becourse.global.auth.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -33,10 +34,11 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("").hasRole("USER")
-                        .requestMatchers("").hasRole("LECTURER")
-                        .requestMatchers("").hasRole("ADMIN")
-                        .anyRequest().permitAll()
+                        .requestMatchers("/oauth/**", "/user/**", "/oauth", "/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/video/**").hasRole("USER")
+                        .requestMatchers("/video/**").hasRole("LECTURER")
+                        .requestMatchers("/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
                 .build();

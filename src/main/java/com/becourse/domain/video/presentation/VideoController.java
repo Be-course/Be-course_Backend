@@ -27,12 +27,12 @@ public class VideoController {
         return videoService.getVideos();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public BaseResponse getVideo(@PathVariable Long id){
         return videoService.getVideo(id);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public BaseResponse deleteVideo(@PathVariable Long id){
         return videoService.deleteVideo(id);
     }
