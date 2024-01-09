@@ -34,10 +34,10 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/oauth/**", "/user/**", "/oauth").permitAll()
+                        .requestMatchers("/oauth/**", "/user/**", "/oauth", "/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/video/**").hasRole("USER")
                         .requestMatchers("/video/**").hasRole("LECTURER")
-                        .anyRequest().hasRole("ADMIN")
+                        .requestMatchers("/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
