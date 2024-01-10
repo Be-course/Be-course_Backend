@@ -17,29 +17,32 @@ public class VideoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String title;
 
-    @Column
+    @Column(nullable = false)
     private String content;
 
-    @Column
+    @Column(nullable = false)
     private String tag ;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate createAt;
 
-    @Column
+    @Column(nullable = false)
     private String creator;
 
-    @Column
+    @Column(nullable = false)
     private int price;
 
-    @Column
+    @Column(nullable = false)
     private String video_url;
 
+    @Column(nullable = false)
+    private Long check_info; // 비디오 작성자 pk 저장용
+
     @Builder
-    public VideoEntity(String title, String content, String tag, LocalDate createAt, String creator, int price, String video_url) {
+    public VideoEntity(String title, String content, String tag, LocalDate createAt, String creator, int price, String video_url , Long check_info) {
         this.title = title;
         this.content = content;
         this.tag = tag;
@@ -47,6 +50,7 @@ public class VideoEntity {
         this.creator = creator;
         this.price = price;
         this.video_url = video_url;
+        this.check_info = check_info;
     }
 }
 
