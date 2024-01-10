@@ -5,16 +5,20 @@ import com.becourse.domain.user.dto.LoginRequest;
 import com.becourse.domain.user.exception.UserException;
 import com.becourse.domain.user.service.UserService;
 import com.becourse.global.common.BaseResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@Tag(name = "UserController", description = "회원가입, 로그인, 유저 정보 찾기")
 public class UserController {
     private final UserService userService;
 
     @PostMapping
+    @Operation(summary = "회원가입")
     public BaseResponse join(@RequestBody CreateUserRequest createUserRequest) {
         if(createUserRequest.isNull()) throw UserException.badRequestException();
 
@@ -22,6 +26,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @Operation(summary = "로그인")
     public BaseResponse login(@RequestBody LoginRequest loginRequest) {
         if(loginRequest.isNull()) throw UserException.badRequestException();
         
@@ -29,6 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/{userIdx}")
+    @Operation(summary = "유저 정보 조회", description = "유저의 id 값으로 조회")
     public BaseResponse getUser(@PathVariable Long userIdx) {
         return userService.getUser(userIdx);
     }
